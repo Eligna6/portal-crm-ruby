@@ -1,0 +1,41 @@
+<%= form_with(model: prospect) do |form| %>
+  <% if prospect.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(prospect.errors.count, "error") %> han impedido que se guardase este prospecto:</h2>
+
+      <ul>
+        <% prospect.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :name,"Nombre y apellido", style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :phone,"Teléfono", style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :status,'Estado', style: "display: block" %>
+    <%= form.select :status, [['Prospecto','prospecto'],['Cliente','cliente'],['Interesado','interesado']] %>
+  </div>
+<br>
+  <div>
+    <%= form.hidden_field :entered_by, value: current_user.email %>
+  </div>
+
+  <div>
+    <%= form.submit "Ingresar prospecto"%>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+
+<div class="container">
+<h2>Detalle del prospecto</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Ingresado por</th>
+      <th scope="col">Fecha de ingreso</th>
+      <th scope="col">Conversaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=@prospect.id%> </th>
+      <td><%=@prospect.email%></td>
+      <td><%=@prospect.name%></td>
+      <td><%=@prospect.phone%></td>
+      <td><%=@prospect.status%></td>
+      <td><%=@prospect.entered_by%></td>
+      <td><%=@prospect.created_at.strftime("%d/%m/%Y")%></td>
+      <td><%=@prospect.comments.count%></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container">
+  <%= link_to "Editar", edit_prospect_path(@prospect) %> |
+  <%= link_to "Volver al listado", prospects_path %>
+  <br><br>
+  <%= button_to "Eliminar prospecto", @prospect, method: :delete,class:'btn btn-danger' %>
+  <br>
+</div>
+
+<div class="container">
+  <h2>Nueva conversación</h2>
+  <%= render 'comments/form', prospect: @prospect %>
+  <br><br>
+  <h2>Listado de conversaciones</h2>
+  <% @comments.each do | comm| %>
+  <%= render 'comments/comment', prospect: @prospect, comment: comm %>
+  <%end%>
+</div>
+

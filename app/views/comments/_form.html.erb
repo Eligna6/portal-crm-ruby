@@ -1,0 +1,6 @@
+<%= form_with(model: [prospect, prospect.comments.build]) do |f| %>
+<div class="form-control">
+    <%= f.rich_text_area :body %>
+    <%= f.submit "Ingresar", class: "btn btn-primary mt-1" %>
+  </div>
+<% end %>

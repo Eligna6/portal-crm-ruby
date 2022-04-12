@@ -1,0 +1,10 @@
+<div class="comment-<%= comment.id%>"
+style="border: 1px solid black; padding: 1em; margin: 1em;">
+    <%=comment.body%>
+    <hr>
+    <span>Actualizado el <em><%= comment.updated_at.strftime("%d/%m/%Y")%></em> por <em><%=current_user.email%></em></span>
+    <div class="button-group float-end">
+    <%= button_to "Eliminar", [prospect,comment], class:"btn btn-danger", method: :delete %>
+    </div>
+
+</div>

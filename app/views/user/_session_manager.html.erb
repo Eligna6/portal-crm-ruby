@@ -1,0 +1,9 @@
+<%if current_user %>
+        <li class="nav-item">
+            <%= button_to "Cerrar sesión", destroy_user_session_path, class:'nav-link btn-dark', method: :delete %>
+        </li>
+<%else%>
+        <li class="nav-item">   
+            <%= link_to "Iniciar sesión", new_user_session_path, class:'nav-link'%>
+        </li>
+<%end%>
